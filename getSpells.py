@@ -18,7 +18,7 @@ for row in rows:
     print(row_data)
 
 
-#print(table)
+print(table)
 #products = r.html.find('')
 
 
