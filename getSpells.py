@@ -5,9 +5,11 @@ from bs4 import BeautifulSoup
 session = HTMLSession()
 
 baseUrl = 'https://dnd5e.wikidot.com/spells'
+spellUrl = f'https://dnd5e.wikidot.com{}'
+
 
 urlResponse = session.get(baseUrl)
-spellsUrlResponse = session.get(f'baseUrl{}')
+spellsUrlResponse = session.get(?)
 
 soup = BeautifulSoup(urlResponse.content, 'html.parser')
 table = soup.find('div', {'class': 'yui-content'})
