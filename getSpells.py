@@ -4,13 +4,14 @@ from bs4 import BeautifulSoup
 
 session = HTMLSession()
 
-url = 'https://dnd5e.wikidot.com/spells'
+baseUrl = 'https://dnd5e.wikidot.com/spells'
 
-urlResponse = session.get(url)
+urlResponse = session.get(baseUrl)
+spellsUrlResponse = session.get(f'baseUrl{}')
 
 soup = BeautifulSoup(urlResponse.content, 'html.parser')
 table = soup.find('div', {'class': 'yui-content'})
-urls = []
+spellUrls = []
 for url in table.find_all('a'):
-    urls.append(url.get('href'))
-print(urls)
+    spellUrls.append('https://dnd5e.wikidot.com'+url.get('href'))
+print(spellSoup)
