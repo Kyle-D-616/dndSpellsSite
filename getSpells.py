@@ -20,7 +20,13 @@ spells = []
 for spellUrl in spellUrls:
     urlResponse = session.get(spellUrl)
     soup = BeautifulSoup(urlResponse.content, 'html.parser')
-    spell = soup.find('div', {'class': 'page-title page-header'})
-    print(spell)
-    '''spellInfo = soup.find('div', {'class': 'page-content'})
-    spells.append({spell.get('span'): spellInfo.text} )'''
+    #spell name
+    spellDiv = soup.find('div', {'class': 'page-title page-header'})
+    spellName = spellDiv.find('span').get_text(strip=True)
+
+    #spell body
+    spellBodyDiv = soup.find('div', {'id': 'page-content'})
+    spellBody = spellBodyDiv.find_all('p')
+    attributes={f'atr{i+1}': p.get_text(strip=True) for i, p in enumerate(spellBody)}
+
+    print(attributes)
